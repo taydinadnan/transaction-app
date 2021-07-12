@@ -140,13 +140,13 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "second_app",
+      "name": "transaction_app",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.11"
     }
   ],
-  "generated": "2021-07-04T10:50:45.721004Z",
+  "generated": "2021-07-08T09:53:24.820483Z",
   "generator": "pub",
   "generatorVersion": "2.13.3"
 }

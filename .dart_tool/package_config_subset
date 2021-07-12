@@ -1,7 +1,3 @@
-second_app
-2.11
-file:///Users/turgay/Desktop/FlutterCalisma/second_app/
-file:///Users/turgay/Desktop/FlutterCalisma/second_app/lib/
 async
 2.12
 file:///Users/turgay/Desktop/flutterSDK/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.6.1/
@@ -94,4 +90,8 @@ flutter_test
 2.12
 file:///Users/turgay/Desktop/flutterSDK/flutter/packages/flutter_test/
 file:///Users/turgay/Desktop/flutterSDK/flutter/packages/flutter_test/lib/
+transaction_app
+2.11
+file:///Users/turgay/Desktop/transaction_app/
+file:///Users/turgay/Desktop/transaction_app/lib/
 2

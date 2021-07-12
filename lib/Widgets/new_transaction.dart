@@ -1,19 +1,49 @@
+import 'dart:io';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:transaction_app/Widgets/adaptive_flat_button.dart';
 
 class NewTransactiopn extends StatefulWidget {
   final Function addTx;
 
-  NewTransactiopn(this.addTx);
+  NewTransactiopn(this.addTx) {
+    print('Constructor NewTransaction Widget');
+  }
 
   @override
-  _NewTransactiopnState createState() => _NewTransactiopnState();
+  _NewTransactiopnState createState() {
+    print('createState NewTransaction Widget');
+    return _NewTransactiopnState();
+  }
 }
 
 class _NewTransactiopnState extends State<NewTransactiopn> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
   DateTime _selectedDate;
+
+  _NewTransactiopnState() {
+    print('Constructor NewTransaction Widget');
+  }
+  @override
+  void initState() {
+    print('initState()');
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(NewTransactiopn oldWidget) {
+    print('didUpdateWidget()');
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
+  void dispose() {
+    print('dispose()');
+    super.dispose();
+  }
 
   void _submitData() {
     if (_amountController.text.isEmpty) {
@@ -55,68 +85,80 @@ class _NewTransactiopnState extends State<NewTransactiopn> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        padding: EdgeInsets.all(10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Tittle'),
-              controller: _titleController,
-              onSubmitted: (_) => _submitData(),
-              //onChanged: (value) {
-              //  titleInput = value;
-              // },
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
-              controller: _amountController,
-              keyboardType: TextInputType.number,
-              onSubmitted: (_) => _submitData(),
-              //onChanged: (value) => amountInput = value,
-            ),
-            Container(
-              height: 70,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(
-                      _selectedDate == null
-                          ? 'No Date Chosen!'
-                          : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
-                    ),
-                  ),
-                  FlatButton(
-                    textColor: Theme.of(context).primaryColor,
-                    child: Text(
-                      '-Choose Date-',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        letterSpacing: 1.5,
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 10,
+            left: 10,
+            right: 10,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(labelText: 'Tittle'),
+                controller: _titleController,
+                onSubmitted: (_) => _submitData(),
+                //onChanged: (value) {
+                //  titleInput = value;
+                // },
+              ),
+              TextField(
+                decoration: InputDecoration(labelText: 'Amount'),
+                controller: _amountController,
+                keyboardType: TextInputType.number,
+                onSubmitted: (_) => _submitData(),
+                //onChanged: (value) => amountInput = value,
+              ),
+              Container(
+                height: 70,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(
+                        _selectedDate == null
+                            ? 'No Date Chosen!'
+                            : 'Picked Date: ${DateFormat.yMd().format(_selectedDate)}',
                       ),
                     ),
-                    onPressed: _presentDatePicker,
-                  ),
-                ],
+                    // ignore: deprecated_member_use
+                    AdaptiveFlatButton('Choose Date', _presentDatePicker)
+                  ],
+                ),
               ),
-            ),
-            // ignore: deprecated_member_use
-            RaisedButton(
-              child: Text(
-                'Add Transaction',
-                style: TextStyle(
-                    fontSize: 15,
-                    letterSpacing: 3,
-                    fontWeight: FontWeight.bold),
-              ),
-              color: Colors.orange,
-              textColor: Colors.white,
-              onPressed: _submitData,
-            )
-          ],
+              // ignore: deprecated_member_use
+              Platform.isIOS
+                  ? CupertinoButton(
+                      color: Colors.orange[400],
+                      child: Text(
+                        'Add Transaction',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      onPressed: _submitData,
+                    )
+                  // ignore: deprecated_member_use
+                  : RaisedButton(
+                      child: Text(
+                        'Add Transaction',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      color: Colors.orange,
+                      textColor: Colors.white,
+                      onPressed: _submitData,
+                    )
+            ],
+          ),
         ),
       ),
     );

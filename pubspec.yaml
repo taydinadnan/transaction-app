@@ -1,4 +1,4 @@
-name: second_app
+name: transaction_app
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -61,10 +61,13 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: ZenLoop
+    - family: Lora
       fonts:
-        - asset: assets/fonts/ZenLoop-Regular.ttf
-        - asset: assets/fonts/ZenLoop-Italic.ttf
+        - asset: assets/fonts/Lora-Regular.ttf
+        - asset: assets/fonts/Lora-Bold.ttf
+        - asset: assets/fonts/Lora-Medium.ttf
+        - asset: assets/fonts/Lora-Italic-VariableFont_wght.ttf
+
           weight: 700
   #   - family: Trajan Pro
   #     fonts:
